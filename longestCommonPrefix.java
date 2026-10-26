@@ -1,0 +1,34 @@
+
+class Main {
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        String[] strs = {"nih", "niha", "nihar", "nihal","ntest"};
+
+        String result = solution.longestCommonPrefix(strs);
+
+        if (result.length() != 0) {
+            System.out.println("Prefix: " + result);
+        } else {
+            System.out.println("Error: no common prefix");
+        }
+    }
+}
+
+class Solution {
+    public String longestCommonPrefix(String[] strs) {
+        String prefix = strs[0];
+
+        for (int i = 1; i < strs.length; i++) {
+            while (!strs[i].startsWith(prefix)) {
+                prefix = prefix.substring(0, prefix.length() - 1);
+
+                if (prefix.isEmpty()) {
+                    return "";
+                }
+            }
+        }
+
+        return prefix;
+    }
+}
